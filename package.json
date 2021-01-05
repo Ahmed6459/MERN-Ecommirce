@@ -1,0 +1,29 @@
+{
+  "name": "ecommirceapp",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon backend/server.js",
+    "clint": "npm start --prefix my-app",
+    "div": "concurrently \"nodemon backend/server.js\" \"npm run clint\"",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "data:import": "node backend/seeder",
+    "data:destroy": "node backend/seeder -d"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "cors": "^2.8.5",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "express-async-handler": "^1.1.4",
+    "mongoose": "^5.11.8"
+  },
+  "devDependencies": {
+    "colors": "^1.4.0",
+    "concurrently": "^5.3.0",
+    "nodemon": "^2.0.6"
+  }
+}

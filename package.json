@@ -6,7 +6,7 @@
   "scripts": {
     "start": "nodemon backend/server.js",
     "clint": "npm start --prefix clint",
-    "div": "concurrently \"nodemon backend/server.js\" \"npm run clint\"",
+    "dev": "concurrently \"nodemon backend/server.js\" \"npm run clint\"",
     "test": "echo \"Error: no test specified\" && exit 1",
     "data:import": "node backend/seeder",
     "data:destroy": "node backend/seeder -d"

@@ -1,21 +1,22 @@
-import React,{useState,useEffect} from "react"
-
+import React,{useEffect} from "react"
+import {useDispatch,useSelector} from "react-redux"
 import ProductCard from "../components/ProductCard"
-import Axios from "axios"
+import {productsList} from "../redux/actions/productActions"
 
 // import products from "../products";
 
 
 const HomeScreen = ()=>{
-    const [products,productsSetState]= useState([]);
-    useEffect(()=>{
-        const fetchproducts = async()=>{
-            const res = await Axios.get("/api/products")
-            productsSetState(res.data)
-            console.log(res.data);
-        }
-        fetchproducts()
-    },[])
+
+    const dispatch = useDispatch()
+
+    const listproduct = useSelector((state)=>state.listproduct)
+    
+    const {products}=listproduct
+
+    useEffect( ()=>{
+        dispatch(productsList())
+    },[dispatch])
     return(
         <div className="container">
             <div className="row">

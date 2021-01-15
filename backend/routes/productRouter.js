@@ -9,7 +9,8 @@ const asyncHandler = require("express-async-handler")
 //@acc  puplic
 router.get("/",asyncHandler(async(req,res)=>{
     const products = await Products.find({})
-
+    // res.status(401)
+    // throw new Error("not authorized")
     res.json(products)
 }) )
 

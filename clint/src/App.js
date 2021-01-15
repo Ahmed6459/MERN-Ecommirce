@@ -2,7 +2,7 @@ import { BrowserRouter as Router, Route } from "react-router-dom";
 import "./App.css";
 import Header from "./components/Layout/Hedder";
 import HomeScreen from "./screens/HomeScreen";
-import ProductInfo from "./components/ProductInfo"
+import ProductsCardList from "./components/ProductsCardList"
 
 function App() {
   return (
@@ -10,7 +10,7 @@ function App() {
       <Header />
       <main>
         <Route path="/" component={()=><HomeScreen/>} exact />
-        <Route path="/product/:id" component={ProductInfo} />
+        <Route path="/product/:id" component={ProductsCardList} />
       </main>
     </Router>
   );

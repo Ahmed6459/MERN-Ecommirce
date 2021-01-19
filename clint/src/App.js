@@ -1,8 +1,9 @@
 import { BrowserRouter as Router, Route } from "react-router-dom";
 import "./App.css";
 import Header from "./components/Layout/Hedder";
-import HomeScreen from "./screens/HomeScreen";
-import ProductsCardList from "./components/ProductsCardList"
+import HomeScreen from "./components/screens/HomeScreen";
+import ProductDetails from "./components/ProductDetails"
+import CartScreen from "./components/screens/CartScreen"
 
 function App() {
   return (
@@ -10,7 +11,8 @@ function App() {
       <Header />
       <main>
         <Route path="/" component={()=><HomeScreen/>} exact />
-        <Route path="/product/:id" component={ProductsCardList} />
+        <Route path="/product/:id" component={ProductDetails} />
+        <Route path="/cart/:id?" component={CartScreen} />
       </main>
     </Router>
   );

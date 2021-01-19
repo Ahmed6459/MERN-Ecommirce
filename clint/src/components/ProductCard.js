@@ -1,11 +1,14 @@
 import React from "react";
 import { Card } from "react-bootstrap";
 import { Link } from "react-router-dom";
+import Fade from "react-reveal/Fade"
+
 
 import Rating from "./Rating";
 
 const ProductCard = ({product}) => {
   return (
+    <Fade bottom>
       <Card className="rounded p-3 my-3" >
           <Link to={`/product/${product._id}`}>
             <Card.Img src={product.image} variant="top"/>
@@ -23,6 +26,7 @@ const ProductCard = ({product}) => {
             <Card.Text>{product.price}$</Card.Text>
             </Card.Body>
       </Card>
+    </Fade>  
   );
 };
 

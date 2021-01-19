@@ -1,13 +1,11 @@
 import React,{useEffect} from "react"
 import {useDispatch,useSelector} from "react-redux"
-import ProductCard from "../components/ProductCard"
-import {productsList} from "../redux/actions/productActions"
+import ProductCard from "../ProductCard"
+import {productsList} from "../../redux/actions/productActions"
+import Spinner from "../Spinner"
+import Error from "../error"
 
-import Spinner from "../components/Spinner"
-import Error from "../components/error"
-
-// import products from "../products";
-
+// loop on productcard componant
 
 const HomeScreen = ()=>{
 
@@ -31,8 +29,8 @@ const HomeScreen = ()=>{
                 {products.map((p)=>{
                     return(
                         <div className="col-md-4 col-sm-6 col-12" key={p._id}>
-                            <ProductCard product ={p}></ProductCard>
-                        </div>
+                                <ProductCard product ={p}></ProductCard>
+                            </div>
                     )
                 })}
             </div>

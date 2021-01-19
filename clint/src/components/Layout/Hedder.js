@@ -14,8 +14,8 @@ const Header = ()=>{
         <LinkContainer to="/">
         <Nav.Link >Home</Nav.Link>
         </LinkContainer>
-        <LinkContainer to="/card">       
-        <Nav.Link>Card</Nav.Link>
+        <LinkContainer to="/cart">       
+        <Nav.Link>Cart</Nav.Link>
         </LinkContainer>
         <LinkContainer to="/login">
         <Nav.Link >Login</Nav.Link>

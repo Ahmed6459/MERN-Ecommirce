@@ -1,62 +1,58 @@
-const mongoose = require("mongoose")
-const donenv = require("dotenv")
-const colors = require("colors")
-const products = require("./products");
-const users = require("./model/dummyData/users")
-const User = require("./model/userModel")
-const Product = require("./model/productModel")
-const Order = require("./model/orderModel")
-const connectDB = require("./db");
+  
+const mongoose = require( 'mongoose')
+const dotenv = require( 'dotenv')
+const colors = require( 'colors')
+const users = require( './model/dummyData/users')
+// const products = require( './data/products.js')
+const User = require( './model/userModel.js')
+const Product = require( './model/productModel.js')
+const Order = require( './model/orderModel.js')
+const connectDB = require( './db.js')
 
-donenv.config();
+dotenv.config()
 
-connectDB();
+connectDB()
 
-const importDate = async ()=>{
-    try {
+const importData = async () => {
+  try {
+    await Order.deleteMany()
+    await Product.deleteMany()
+    await User.deleteMany()
 
-        await Product.deleteMany()
-        await User.deleteMany()
+    const createdUsers = await User.insertMany(users)
 
-        const createUsers = await User.insertMany(users)
-        const adminUser = await createUsers[0]._id
-        const sampleProducts = products.map((product)=>{
-            return{...Product,adminUser}
-        })
+    const adminUser = createdUsers[0]._id
 
-        await Product.insertMany(sampleProducts)
-        console.log("data imported".green.inverse);
-        process.exit()
-        
-    } catch (error) {
+    const sampleProducts = products.map((product) => {
+      return { ...product, user: adminUser }
+    })
 
-        console.error(`${error}`.red.inverse);
-        process.exit(1)
-        
-    }
+    await Product.insertMany(sampleProducts)
+
+    console.log('Data consted!'.green.inverse)
+    process.exit()
+  } catch (error) {
+    console.error(`${error}`.red.inverse)
+    process.exit(1)
+  }
 }
 
-const clearDate = async ()=>{
-    try {
+const destroyData = async () => {
+  try {
+    await Order.deleteMany()
+    await Product.deleteMany()
+    await User.deleteMany()
 
-        await Order.deleteMany()
-        await Product.deleteMany()
-        await User.deleteMany()
-
-        await Product.insertMany(sampleProducts)
-        console.log("Data Cleared".green.inverse);
-        process.exit()
-        
-    } catch (error) {
-
-        console.error(`${error}`.red.inverse);
-        process.exit(1)
-        
-    }
+    console.log('Data Destroyed!'.red.inverse)
+    process.exit()
+  } catch (error) {
+    console.error(`${error}`.red.inverse)
+    process.exit(1)
+  }
 }
 
-if(process.arch[2]==="-d"){
-    clearDate()
-}else{
-    importDate()
+if (process.argv[2] === '-d') {
+  destroyData()
+} else {
+importData()
 }

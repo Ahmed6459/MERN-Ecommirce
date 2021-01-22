@@ -1,6 +1,5 @@
-const mongoose =  require ("Mongoose") ;
-
-const orderSchema = mongoose.Schema({
+const mongoose = require("mongoose")
+const orderSchema = new mongoose.Schema({
     user:{
         type: mongoose.Schema.Types.ObjectId ,
         required:true,

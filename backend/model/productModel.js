@@ -1,8 +1,7 @@
 const mongoose = require("mongoose");
-const products = require("../products");
 
 
-const reviewSchema = mongoose.Schema({
+const reviewSchema =new mongoose.Schema({
     name:{type:String,required:true},
     rating:{type:Number,required:true},
     comment:{type:String,required:true}
@@ -31,7 +30,7 @@ const productSchema = mongoose.Schema({
         type:String,
         required:true
     },
-    discription:{
+    description:{
         type:String,
         required:true
     },
